@@ -1,9 +1,13 @@
 #map{
-  height: 75%;
+  height: 50%;
+  width: 100%;
+  margin: auto;
+  border-radius: 30px;
 }
 
 html, body{
   height: 100%;
+  width: 100%;
   margin: 16px;
   padding-left: 0;
 }

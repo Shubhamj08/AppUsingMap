@@ -1,43 +1,3 @@
-
-var latitude ;
-var longtitude ;
-x = document.getElementById("sometext");
-
-window.onload = function (){
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  }else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-};
-
-
-
-function showPosition(position) {
-  latitude = position.coords.latitude ;
-  longitude = position.coords.longitude;
-  //  x.innerHTML = position.coords.accuracy;
-  initMap();
-}
-
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-    x.innerHTML = "User denied the request for Geolocation.";
-    break;
-    case error.POSITION_UNAVAILABLE:
-    x.innerHTML = "Location information is unavailable.";
-    break;
-    case error.TIMEOUT:
-    x.innerHTML = "The request to get user location timed out.";
-    break;
-    case error.UNKNOWN_ERROR:
-    x.innerHTML = "An unknown error occurred.";
-    break;
-  }
-}
-
-
 function initMap(){
 
   var locations = [
@@ -68,13 +28,32 @@ function initMap(){
 
   var centerLoc = {lat: latmean(), lng: lngmean()};
   var map = new google.maps.Map(document.getElementById("map"),
-  {center:centerLoc, zoom: 12});
+  {center:centerLoc, zoom: 11});
 
-  var markers = locations.map(function (location){
-    return new google.maps.Marker({
+  function addMarker(location) {
+    var marker =  new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
+      title: "click to zoom"
     });
+
+    marker.addListener('click', function () {
+      map.setCenter(marker.getPosition());
+      map.setZoom(15);
+    });
+
+  }
+
+  for (var i=0; i< locations.length; i++){
+    var location = locations[i];
+
+    addMarker(location);
+  }
+
+  map.addListener('center_changed', function () {
+    window.setTimeout(function () {
+      map.panTo(map.position);
+    }, 5000);
   });
 
 }
