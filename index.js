@@ -30,7 +30,7 @@ var heading;
 
 function selectId(i){
   switch(i){
-    case 0: text = focusedId = rF;
+    case 0: focusedId = rF;
     heading = "Red Fort";
     break;
 
@@ -38,16 +38,16 @@ function selectId(i){
     heading = "Qutub Minar";
     break;
 
-    case 2: focusedId = aD;
-    heading = "Akshardham";
-    break;
-
-    case 3: focusedId = iG;
+    case 2: focusedId = iG;
     heading = "India Gate";
     break;
 
-    case 4: focusedId = lT;
+    case 3: focusedId = lT;
     heading = "Lotus Temple";
+    break;
+
+    case 4: focusedId = aD;
+    heading = "Akshardham";
     break;
 
     case 5: focusedId = hT;
@@ -56,9 +56,15 @@ function selectId(i){
   }
 
   showInfo();
+  setZoom(i);
 }
 
 function showInfo(){
   document.getElementById('header').innerHTML = "<h4>" + heading + "</h4>";
   document.getElementById('info').innerHTML = "<i>" + focusedId + "</i>";
+}
+
+function setZoom(i){
+  map.setCenter(locations[i]);
+  map.setZoom(15);
 }
