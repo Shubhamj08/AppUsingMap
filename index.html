@@ -21,13 +21,16 @@
 <body>
 
   <div class="container-fluid" style="height:100%; width: 100%;">
+    <!-- Heading -->
     <div class="jumbotron d-flex justify-content-center bg-light sticky-top" id="jumbo">
       <h1 class="display-1">Using Google Maps API</h1>
     </div>
     <div class="form-row p-1" style="height:100%; width:100%;">
+      <!-- map -->
       <div class="col-md-4">
         <div id="map"></div>
       </div>
+      <!-- cards of places -->
       <div class="col-md-8">
         <div class="form-row mt-2 mb-2">
           <div class="col-md">
@@ -37,7 +40,6 @@
                 <h5 class="card-title">
                   Red Fort
                 </h5>
-                <p class="card-text" id="rf"></p>
               </div>
             </div>
           </div>
@@ -48,7 +50,6 @@
                 <h5 class="card-title">
                   Qutub Minar
                 </h5>
-                <p class="card-text"id="qm"></p>
               </div>
             </div>
           </div>
@@ -59,7 +60,6 @@
                 <h5 class="card-title">
                   India Gate
                 </h5>
-                <p class="card-text" id="ig"></p>
               </div>
             </div>
           </div>
@@ -72,7 +72,6 @@
                 <h5 class="card-title">
                   Lotus Temple
                 </h5>
-                <p class="card-text" id="lt"></p>
               </div>
             </div>
           </div>
@@ -83,7 +82,6 @@
                 <h5 class="card-title">
                   Akshardham
                 </h5>
-                <p class="card-text" id="ad"></p>
               </div>
             </div>
           </div>
@@ -94,7 +92,6 @@
                 <h5 class="card-title">
                   Humayun's Tomb
                 </h5>
-                <p class="card-text" id="ht"></p>
               </div>
             </div>
           </div>
@@ -102,6 +99,7 @@
       </div>
     </div>
   </div>
+  <!-- model for info -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -110,6 +108,7 @@
         </div>
         <div class="modal-body" id="info"></div>
         <div class="modal-footer">
+          <code id="latlng"></code>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>

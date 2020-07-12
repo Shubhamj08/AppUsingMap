@@ -1,3 +1,9 @@
+
+//global objects
+var map;
+var centerLoc;
+
+//Locations of places
 var locations = [
   {lat: 28.656473, lng: 77.242943},
   {lat: 28.5245, lng: 77.1855},
@@ -7,6 +13,7 @@ var locations = [
   {lat: 28.5933, lng: 77.2507}
 ];
 
+//mean longtitude of places to get a central point for the map
 function latmean(){
   var sum = 0;
   for(var i =0; i<locations.length; i++){
@@ -15,6 +22,7 @@ function latmean(){
   return sum/locations.length ;
 }
 
+//mean longtitude of places to get a central point for the map
 function lngmean(){
   var sum = 0;
   for(var i =0; i<locations.length; i++){
@@ -23,6 +31,7 @@ function lngmean(){
   return sum/locations.length ;
 }
 
+//names of places
 var titles = ["Red Fort",
 "Qutub Minar",
 "India Gate",
@@ -30,28 +39,32 @@ var titles = ["Red Fort",
 "Akshardham",
 "Humanyun\'s Tomb"];
 
-var map;
-var centerLoc;
-
+//initialize map
 function initMap(){
-
+//center location
   centerLoc = {lat: latmean(), lng: lngmean()};
+
+//map object
   map = new google.maps.Map(document.getElementById("map"),
   {center:centerLoc, zoom: 11});
 
+//loop to add all necessary markers
   for (var i=0; i< locations.length; i++){
     addMarker(i);
   }
 
 }
 
+//add a marker
 function addMarker(i) {
+//marker object
   var marker =  new google.maps.Marker({
     position: locations[i],
     map: map,
     title: "click to zoom"
   });
 
+//info window object for marker's InfoWindow
   var infoWindow = new google.maps.InfoWindow({
     content: '<h5>' + titles[i] + '</h5>' + '<p><i>lat: ' + locations[i].lat.toString() +
     '<br>lng: ' + locations[i].lng.toString() + '</i></p>'
@@ -60,6 +73,7 @@ function addMarker(i) {
   clickListener(marker, infoWindow);
 }
 
+//Event Listeners for marker
 function clickListener(marker, infoWindow){
   marker.addListener('click', function () {
     map.setCenter(marker.getPosition());
@@ -74,6 +88,7 @@ function clickListener(marker, infoWindow){
     infoWindow.close();
   });
 
+//Event Listener for heading
   document.getElementById('jumbo').addEventListener('click', function () {
     map.setCenter(centerLoc);
     map.setZoom(11);

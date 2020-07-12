@@ -11,37 +11,37 @@ html, body{
   padding: 5;
 }
 
+/* for smaller screens */
 @media screen and (max-width:768px){
   #map{
     visibility: collapse;
   }
 }
 
+/* initial display of text fields inside card */
 #qm, #lt, #ig, #ht, #rf, #ad {
-  display: none;
+  display: visible;
 }
 
+/* rounding the card */
 div.card {
   border-radius: 10px;
 }
 
+/* elevation and shadow */
 div.card:hover, .jumbotron{
   box-shadow: 0 2px 2px 0 grey,
              0 3px 1px -2px grey,
              0 1px 5px 0 grey;
 }
 
+/* rounding the image in card so that it matches the card boundaries */
 img.card-img-top {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-/* div.card:hover {
-  box-shadow: 0 6px 6px 0 grey,
-             0 9px 3px -6px grey,
-             0 3px 15px 0 grey;
-} */
-
+/* model's shadow */
 div.modal {
   box-shadow: 0  9px 46px  8px #333,
               0 11px 15px -7px #333,

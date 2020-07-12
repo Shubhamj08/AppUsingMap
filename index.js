@@ -1,3 +1,28 @@
+
+var lat;
+var lng;
+var locOn;
+
+window.onload = function(){
+  if(navigator.geolocation){
+    if (navigator.geolocation) {
+      locOn = true;
+      navigator.geolocation.getCurrentPosition(findPosition, getErr);
+    } else {
+      locOn = false;
+    }
+  }
+};
+
+function getErr() {
+  locOn = false;
+}
+
+function findPosition(position) {
+  lat = position.coords.latitude;
+  lng = position.coords.longitude;
+}
+
 var rF = 'The Red Fort is a historic fort in the city of Delhi in India that served as the main residence of the Mughal Emperors. Emperor Shah Jahan commissioned reconstruction of the Red Fort on 12 May 1638, when he decided to shift his capital from Agra to Delhi. Originally red and white,its design is credited to architect it was reconstructed between May 1639 and April 1648.'+
 'On 15 August 1947, the first prime minister of India, Jawaharlal Nehru, raised the Indian national flag above the Lahori Gate. Every year on India\'s Independence Day (15 August), the prime minister hoists the Indian "tricolour flag" at the fort\'s main gate and delivers a nationally broadcast speech from its ramparts.';
 
@@ -13,13 +38,16 @@ var lT = 'The Lotus Temple, located in Delhi, India, is a Baháʼí House of Wor
 var hT = 'Humayun\'s tomb (Hindustani: Maqbara-i Humayun) is the tomb of the Mughal Emperor Humayun in Delhi, India. The tomb was commissioned by Humayun\'s first wife and chief consort, Empress Bega Begum (also known as Haji Begum), in 1569-70, and designed by Mirak Mirza Ghiyas and his son, Sayyid Muhammad, Persian architects chosen by her. It was the first garden-tomb on the Indian subcontinent, and is located in Nizamuddin East, Delhi, India, close to the' +
 'Dina-panah Citadel, also known as Purana Qila (Old Fort), that Humayun found in 1533. It was also the first structure to use red sandstone at such a scale.';
 
+//instance of all card elements
 var card = document.getElementsByClassName("card");
 
+var i;
 
-for(var i=0; i<card.length; i++){
+for(i=0; i<card.length; i++){
   chooseCard(i);
 }
 
+//function to select which card is chosen
 function chooseCard(i){
   card[i].addEventListener('click', function(){selectId(i);});
 }
@@ -54,9 +82,13 @@ function selectId(i){
     heading = "Humanyun\'s Tomb";
     break;
   }
-
+  //show info about the place
   showInfo();
+  //get the zoom on the coordinates of clicked card
   setZoom(i);
+
+  //distance from user's locations
+  measureDistance(i);
 }
 
 function showInfo(){
@@ -67,4 +99,31 @@ function showInfo(){
 function setZoom(i){
   map.setCenter(locations[i]);
   map.setZoom(15);
+}
+
+function measureDistance(i){
+  var R = 6371e3; // metres
+  var φ1 = lat * Math.PI/180; // φ, λ in radians
+  var φ2 = locations[i].lat * Math.PI/180;
+  var Δφ = (lat-locations[i].lat) * Math.PI/180;
+  var Δλ = (lng-locations[i].lng) * Math.PI/180;
+
+  var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+  Math.cos(φ1) * Math.cos(φ2) *
+  Math.sin(Δλ/2) * Math.sin(Δλ/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+  var distance = (R * c)/1000; // in metres
+
+  showDistance(distance, i);
+}
+
+function showDistance(distance, i){
+  if(locOn){
+    document.getElementById('latlng').innerHTML = 'lat: ' + locations[i].lat.toString() + ' lng: ' + locations[i].lng.toString() +
+    '<br>Distance from your location: ' + distance.toFixed(2) + ' km';
+  }else{
+    document.getElementById('latlng').innerHTML = 'lat: ' + locations[i].lat.toString() + ' lng: ' + locations[i].lng.toString() +
+    '<br>Please reload and provide location access to show distance from your location to place';
+  }
 }
