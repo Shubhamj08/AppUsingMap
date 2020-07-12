@@ -73,4 +73,9 @@ function clickListener(marker, infoWindow){
   marker.addListener('mouseout', function () {
     infoWindow.close();
   });
+
+  document.getElementById('jumbo').addEventListener('click', function () {
+    map.setCenter(centerLoc);
+    map.setZoom(11);
+  });
 }
