@@ -16,6 +16,10 @@ html, body{
   #map{
     visibility: collapse;
   }
+
+  #jumbo {
+    position: inherit;
+  }
 }
 
 /* initial display of text fields inside card */
