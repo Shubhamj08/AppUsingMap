@@ -39,7 +39,7 @@ var hT = 'Humayun\'s tomb (Hindustani: Maqbara-i Humayun) is the tomb of the Mug
 'Dina-panah Citadel, also known as Purana Qila (Old Fort), that Humayun found in 1533. It was also the first structure to use red sandstone at such a scale.';
 
 //instance of all card elements
-var card = document.getElementsByClassName("card");
+var card = document.getElementsByClassName("place");
 
 var i;
 
@@ -89,11 +89,20 @@ function selectId(i){
 
   //distance from user's locations
   measureDistance(i);
+
+  //scroll to top
+  scrollTop();
+}
+
+function scrollTop(){
+  document.body.scrollTop = 280;
+  document.documentElement.scrollTop = 280;
 }
 
 function showInfo(){
   document.getElementById('header').innerHTML = "<h4>" + heading + "</h4>";
   document.getElementById('info').innerHTML = "<i>" + focusedId + "</i>";
+  document.getElementById('expandDiv').style.display = "block";
 }
 
 function setZoom(i){
@@ -113,7 +122,7 @@ function measureDistance(i){
   Math.sin(Δλ/2) * Math.sin(Δλ/2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-  var distance = (R * c)/1000; // in metres
+  var distance = (R * c)/1000; // in kilometres
 
   showDistance(distance, i);
 }
@@ -127,3 +136,8 @@ function showDistance(distance, i){
     '<br>Please reload and provide location access to show distance from your location to place';
   }
 }
+
+var close = document.getElementById('close');
+close.addEventListener('click', function(){
+    document.getElementById('expandDiv').style.display = "none";
+});

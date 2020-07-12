@@ -21,12 +21,6 @@ html, body{
     position: inherit;
   }
 }
-
-/* initial display of text fields inside card */
-#qm, #lt, #ig, #ht, #rf, #ad {
-  display: visible;
-}
-
 /* rounding the card */
 div.card {
   border-radius: 10px;
@@ -50,4 +44,8 @@ div.modal {
   box-shadow: 0  9px 46px  8px #333,
               0 11px 15px -7px #333,
               0 24px 38px  3px #333;
+}
+
+div#expandDiv {
+  display: none;
 }

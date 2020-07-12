@@ -22,19 +22,38 @@
 
   <div class="container-fluid" style="height:100%; width: 100%;">
     <!-- Heading -->
-    <div class="jumbotron d-flex justify-content-center bg-light sticky-top" id="jumbo">
+    <div class="jumbotron d-flex justify-content-center bg-light" id="jumbo">
       <h1 class="display-1">Using Google Maps API</h1>
     </div>
-    <div class="form-row p-1" style="height:100%; width:100%;">
+    <div class="row p-1" style="height:100%; width:100%;">
       <!-- map -->
       <div class="col-md-4">
         <div id="map"></div>
       </div>
+
       <!-- cards of places -->
       <div class="col-md-8">
-        <div class="form-row mt-2 mb-2">
-          <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+
+        <!-- info row -->
+        <div class="row">
+          <div class="col m-2" id="expandDiv">
+            <div class="card">
+              <div class="card-header" id="header">
+                <h5 class="card-title"></h5>
+              </div>
+              <div class="card-body" id="info"></div>
+              <div class="card-footer">
+                <code id="latlng"></code>
+                <button type="button" class="btn btn-outline-danger float-right" id="close">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- first row -->
+        <div class="row mt-2 mb-3">
+          <div class="col-md">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/redFort.jpg" alt="Red Fort" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -43,8 +62,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+          <div class="col-md">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/qutubMinar.jpg" alt="qutub Minar" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -53,8 +72,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+          <div class="col-md">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/IndiaGate.jpg" alt="India Gate" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -64,9 +83,11 @@
             </div>
           </div>
         </div>
-        <div class="form-row mb-2">
+
+        <!-- second row -->
+        <div class="row mb-2">
           <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/LotusTemple.jpg" alt="Lotus Temple" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -76,7 +97,7 @@
             </div>
           </div>
           <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/akshardhamTemple.jpg" alt="akshardham" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -86,7 +107,7 @@
             </div>
           </div>
           <div class="col-md mb-1">
-            <div class="card stretched-link" data-target="#myModal" data-toggle="modal">
+            <div class="place card stretched-link">
               <img class="card-img-top" src="images/humayunTomb.jpg" alt="Humayun's Tomb" style="width:100%;height:200px;" />
               <div class="card-body">
                 <h5 class="card-title">
@@ -96,21 +117,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- model for info -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" id="header">
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body" id="info"></div>
-        <div class="modal-footer">
-          <code id="latlng"></code>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
+
       </div>
     </div>
   </div>
@@ -120,9 +127,6 @@
 
   <!-- script tag for events other that map events-->
   <script src="index.js" type="text/javascript"></script>
-
-  <!--MarkerClusterePlus library -->
-  <!--<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>-->
 
   <!--optional JS script tags for bootstrap-->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
