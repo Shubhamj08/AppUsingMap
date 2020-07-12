@@ -1,3 +1,3 @@
 # AppUsingMap
 
-<h6>Simple webpage which make use of Google Maps API...</h6>
+<h3>Simple webpage which make use of Google Maps API...</h3>
