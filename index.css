@@ -67,5 +67,19 @@ div#expandDiv {
 
 #mCard-body{
   position: relative;
-  top:-15px;
+  top:-10px;
+}
+
+#dir-icon {
+  position: absolute;
+  max-width: 35px;
+  max-height: 35px;
+  right: 20px;
+  }
+
+#dir-icon:hover{
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 0 grey,
+             0 1.5px 0.5px -1px grey,
+             0 0.5px 2.5px 0 grey;
 }

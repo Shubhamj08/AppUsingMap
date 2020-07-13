@@ -95,6 +95,9 @@ function selectId(i){
 
   //show info card on map
   showCardOnMap(i);
+
+  //add navigation link
+  addDirection(i);
 }
 
 function scrollTop(){
@@ -153,3 +156,10 @@ close.addEventListener('click', function(){
   //referenced from map.js
     hide();
 });
+
+function addDirection(i){
+var dir = document.getElementById('link-nav');
+dir.addEventListener('click', function (){
+  dir.href = 'https://www.google.com/maps/dir//' + locations[i].lat + ',' + locations[i].lng + '/@' + locations[i].lat + ',' + locations[i].lng + ',16z?hl=en';
+});
+}
