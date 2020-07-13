@@ -47,10 +47,12 @@ div.modal {
               0 24px 38px  3px #333;
 }
 
+/* info card initially hidden */
 div#expandDiv {
   display: none;
 }
 
+/* short description card on map */
 #map-card{
   position : absolute;
   top: 20px;
@@ -65,11 +67,13 @@ div#expandDiv {
   border-radius: 8px;
 }
 
+/* body of short description card */
 #mCard-body{
   position: relative;
   top:-10px;
 }
 
+/* get directions icon */
 #dir-icon {
   position: absolute;
   max-width: 35px;
