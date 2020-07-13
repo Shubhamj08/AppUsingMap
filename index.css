@@ -1,4 +1,5 @@
 #map{
+  position: relative;
   margin-top: 14px;
   height: 73%;
   width: 100%;
@@ -48,4 +49,23 @@ div.modal {
 
 div#expandDiv {
   display: none;
+}
+
+#map-card{
+  position : absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 0;
+  display: none;
+
+  box-shadow: 0 2px 2px 0 grey,
+             0 3px 1px -2px grey,
+             0 1px 5px 0 grey;
+
+  border-radius: 8px;
+}
+
+#mCard-body{
+  position: relative;
+  top:-15px;
 }

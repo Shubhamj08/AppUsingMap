@@ -92,6 +92,9 @@ function selectId(i){
 
   //scroll to top
   scrollTop();
+
+  //show info card on map
+  showCardOnMap(i);
 }
 
 function scrollTop(){
@@ -137,7 +140,16 @@ function showDistance(distance, i){
   }
 }
 
+function showCardOnMap(i){
+  document.getElementById('map-card').style.display = "block";
+  var title = document.getElementById('mCard-title');
+  var body = document.getElementById('mCard-body');
+  title.innerHTML = '<strong>' + titles[i] + '</strong>';
+  body.innerHTML = desc[i];
+}
+
 var close = document.getElementById('close');
 close.addEventListener('click', function(){
-    document.getElementById('expandDiv').style.display = "none";
+  //referenced from map.js
+    hide();
 });

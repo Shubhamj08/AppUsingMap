@@ -30,6 +30,13 @@ function lngmean(){
   }
   return sum/locations.length ;
 }
+// 1 line description for places
+var desc = ["Iconic 1600s imperial residence and museum",
+"5-storey victory tower with balconies",
+"1920s triumphal arch and war memorial",
+"Temple with a flower like design",
+"Modern temple celebrating Indian arts",
+"Palatial 16th century tomb of Humayun"];
 
 //names of places
 var titles = ["Red Fort",
@@ -66,18 +73,18 @@ function addMarker(i) {
 
 //info window object for marker's InfoWindow
   var infoWindow = new google.maps.InfoWindow({
-    content: '<h5>' + titles[i] + '</h5>' + '<p><i>lat: ' + locations[i].lat.toString() +
-    '<br>lng: ' + locations[i].lng.toString() + '</i></p>'
+    content: '<p>' + titles[i] + '</p>'
   });
 
-  clickListener(marker, infoWindow);
+  clickListener(marker, infoWindow, i);
 }
 
 //Event Listeners for marker
-function clickListener(marker, infoWindow){
+function clickListener(marker, infoWindow, i){
   marker.addListener('click', function () {
     map.setCenter(marker.getPosition());
     map.setZoom(15);
+    showCardOnMap(i);
   });
 
   marker.addListener('mouseover', function (){
@@ -92,5 +99,18 @@ function clickListener(marker, infoWindow){
   document.getElementById('jumbo').addEventListener('click', function () {
     map.setCenter(centerLoc);
     map.setZoom(11);
+    hide();  
+  });
+
+//Event Listener for close button on cards
+  document.getElementById('close').addEventListener('click', function () {
+    map.setCenter(centerLoc);
+    map.setZoom(11);
   });
 }
+
+//function to hide Elements
+ function hide(){
+   document.getElementById('expandDiv').style.display = "none";
+   document.getElementById('map-card').style.display = "none";
+ }
