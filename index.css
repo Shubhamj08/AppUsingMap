@@ -12,16 +12,6 @@ html, body{
   padding: 5;
 }
 
-/* for smaller screens */
-@media screen and (max-width:768px){
-  #map{
-    visibility: collapse;
-  }
-
-  #jumbo {
-    position: inherit;
-  }
-}
 /* rounding the card */
 div.card {
   border-radius: 10px;
@@ -86,4 +76,19 @@ div#expandDiv {
   box-shadow: 0 1px 1px 0 grey,
              0 1.5px 0.5px -1px grey,
              0 0.5px 2.5px 0 grey;
+}
+
+/* for smaller screens */
+@media screen and (max-width:768px){
+  #map{
+    visibility: collapse;
+  }
+
+  #jumbo {
+    position: inherit;
+  }
+
+  #map-card{
+    visibility: collapse;
+  }
 }
